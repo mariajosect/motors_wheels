@@ -1,0 +1,92 @@
+const tablaProductos = document.querySelector('#tabla-productos')
+const total = document.querySelector('#total')
+
+let carrito = []
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')) {
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        listarProductosCarrito()
+    }
+})
+
+const listarProductosCarrito = () => {
+
+    tablaProductos.innerHTML = ''
+    console.log(carrito)
+    carrito.forEach(producto => {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+            <td class="tp-cart-img"><a href="product-details.html"> 
+                <img src="http://localhost/motors_wheels/admin/productos/imagenes/${producto.img}" alt=""></a>
+            </td>
+            <td class="tp-cart-title"><a href="product-details.html">${producto.nombre}</a></td>
+            <td class="tp-cart-price"><span>$${producto.precio}</span></td>
+            <td class="tp-cart-quantity">
+                <div class="tp-product-quantity mt-10 mb-10">
+                    <span class="tp-cart-minus reducir-cantidad" data-id="${producto.id}">
+                        <svg width="10" class="reducir-cantidad" data-id="${producto.id}" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <input class="tp-cart-input" type="text" value="${producto.cantidad}">
+                    <span class="tp-cart-plus aumentar-cantidad" data-id="${producto.id}">
+                        <svg width="10" class="aumentar-cantidad" data-id="${producto.id}" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1 5H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </div>
+            </td>
+            <td class="tp-cart-action">
+                <button class="tp-cart-action-btn" data-id="${producto.id}">
+                    <svg class="eliminar-producto" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.53033 1.53033C9.82322 1.23744 9.82322 0.762563 9.53033 0.46967C9.23744 0.176777 8.76256 0.176777 8.46967 0.46967L5 3.93934L1.53033 0.46967C1.23744 0.176777 0.762563 0.176777 0.46967 0.46967C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L3.93934 5L0.46967 8.46967C0.176777 8.76256 0.176777 9.23744 0.46967 9.53033C0.762563 9.82322 1.23744 9.82322 1.53033 9.53033L5 6.06066L8.46967 9.53033C8.76256 9.82322 9.23744 9.82322 9.53033 9.53033C9.82322 9.23744 9.82322 8.76256 9.53033 8.46967L6.06066 5L9.53033 1.53033Z" fill="currentColor" />
+                    </svg>
+                    <span class="eliminar-producto">Eliminar</span>
+                </button>
+            </td>
+        `
+        tablaProductos.appendChild(tr)
+    })
+    totalProductos()
+}
+
+tablaProductos.addEventListener('click', (e) => {
+    cambiarCantidad(e)
+    eliminarProducto(e)
+    listarProductosCarrito()
+})
+
+const cambiarCantidad = (e) => {
+    e.preventDefault()
+    const id = e.target.dataset['id']
+    if(e.target.classList.contains('aumentar-cantidad')){
+        carrito.forEach(producto => {
+            if(producto.id === parseInt(id)) producto.cantidad++
+        })
+    }else if(e.target.classList.contains('reducir-cantidad')){
+        carrito.forEach(producto => {
+            if(producto.id === parseInt(id) && producto.cantidad >= 1) producto.cantidad--
+        })
+    }
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+}
+
+const eliminarProducto = (e) => {
+    e.preventDefault()
+    if(e.target.classList.contains('eliminar-producto')){
+        const producto = e.target.parentElement.dataset.id
+        carrito = carrito.filter(productoCarrito => productoCarrito.id !== parseInt(producto))
+    }
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+}
+
+const totalProductos = () => {
+    total.innerHTML = ''
+    let costoTotal = 0
+    carrito.forEach(producto => {
+        costoTotal += producto.precio * producto.cantidad
+    })
+    total.innerHTML = `$${costoTotal}`
+}

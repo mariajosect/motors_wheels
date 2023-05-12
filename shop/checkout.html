@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Shofy - Multipurpose eCommerce HTML Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+    <link rel="stylesheet" href="assets/css/flaticon_shofy.css">
+    <link rel="stylesheet" href="assets/css/spacing.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="tp-preloader-content">
+                    <div class="tp-preloader-logo">
+                        <div class="tp-preloader-circle">
+                            <svg width="190" height="190" viewBox="0 0 380 380" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle stroke="#D9D9D9" cx="190" cy="190" r="180" stroke-width="6"
+                                    stroke-linecap="round"></circle>
+                                <circle stroke="red" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round">
+                                </circle>
+                            </svg>
+                        </div>
+                        <img src="assets/img/logo/preloader/preloader-icon.svg" alt="">
+                    </div>
+                    <h3 class="tp-preloader-title">Shofy</h3>
+                    <p class="tp-preloader-subtitle">Loading</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <main>
+
+        <section class="breadcrumb__area include-bg pt-95 pb-50" data-bg-color="#EFF1F5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-12">
+                        <div class="breadcrumb__content p-relative z-index-1">
+                            <h3 class="breadcrumb__title">Checkout</h3>
+                            <div class="breadcrumb__list">
+                                <span><a href="#">Home</a></span>
+                                <span>Checkout</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="tp-checkout-area pb-120" data-bg-color="#EFF1F5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="tp-checkout-bill-area">
+                            <h3 class="tp-checkout-bill-title">Detalles de Facturación</h3>
+
+                            <div class="tp-checkout-bill-form">
+                                <form id="formulario-orden">
+                                    <div class="tp-checkout-bill-inner">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="tp-checkout-input">
+                                                    <label>Nombres <span>*</span></label>
+                                                    <input type="text" placeholder="Nombres" name="nombres" id="nombres">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="tp-checkout-input">
+                                                    <label>Apellidos <span>*</span></label>
+                                                    <input type="text" placeholder="Apellidos" name="apellidos" id="apellidos">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>País / Departamento:* </label>
+                                                    <input type="text" placeholder="País y Departamento" name="pais" id="pais">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>Dirección: *</label>
+                                                    <input type="text" placeholder="Dirección" name="direccion" id="direccion">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>Celular <span>*</span></label>
+                                                    <input type="text" placeholder="Celular" name="celular" id="celular">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>Email <span>*</span></label>
+                                                    <input type="email" placeholder="Email" name="email" id="email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="tp-checkout-place white-bg">
+                            <h3 class="tp-checkout-place-title">Orden de Compra</h3>
+
+                            <div class="tp-order-info-list">
+                                <ul>
+
+                                    <li class="tp-order-info-list-header">
+                                        <h4>Producto</h4>
+                                        <h4>Total</h4>
+                                    </li>
+
+                                    <div id="lista-productos">
+
+                                    </div>
+
+                                    <li class="tp-order-info-list-total">
+                                        <span>Total</span>
+                                        <span id="total">$0</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tp-checkout-payment">
+                                <div class="tp-checkout-payment-item">
+                                    <input type="radio" id="back_transfer" name="payment">
+                                    <label for="back_transfer" data-bs-toggle="direct-bank-transfer">Direct Bank
+                                        Transfer</label>
+                                    <div class="tp-checkout-payment-desc direct-bank-transfer">
+                                    </div>
+                                </div>
+                                <div class="tp-checkout-payment-item">
+                                    <input type="radio" id="cheque_payment" name="payment">
+                                    <label for="cheque_payment">Cheque Payment</label>
+                                    <div class="tp-checkout-payment-desc cheque-payment">
+                                    </div>
+                                </div>
+                                <div class="tp-checkout-payment-item">
+                                    <input type="radio" id="cod" name="payment">
+                                    <label for="cod">Cash on Delivery</label>
+                                    <div class="tp-checkout-payment-desc cash-on-delivery"></div>
+                                    </div>
+                                </div>
+                                <div class="tp-checkout-payment-item paypal-payment">
+                                    <input type="radio" id="paypal" name="payment">
+                                    <label for="paypal">PayPal <img src="assets/img/icon/payment-option.png" alt=""> <a
+                                            href="#">What is PayPal?</a></label>
+                                </div>
+                            </div>
+                            <div class="tp-checkout-btn-wrapper">
+                                <a href="#" class="tp-checkout-btn w-100" id="boton-registrar">Registrar Orden</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/vendor/waypoints.js"></script>
+    <script src="assets/js/bootstrap-bundle.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
+    <script src="assets/js/swiper-bundle.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/range-slider.js"></script>
+    <script src="assets/js/magnific-popup.js"></script>
+    <script src="assets/js/nice-select.js"></script>
+    <script src="assets/js/purecounter.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/isotope-pkgd.js"></script>
+    <script src="assets/js/imagesloaded-pkgd.js"></script>
+    <script src="assets/js/ajax-form.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="checkout.js"></script>
+</body>
+
+</html>
